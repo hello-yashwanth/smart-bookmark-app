@@ -12,7 +12,7 @@ export default function Home() {
       const { data } = await supabase.auth.getSession();
 
       if (data.session) {
-        router.push("/dashboard");
+        router.replace("/dashboard");
       }
     };
 
@@ -23,7 +23,7 @@ export default function Home() {
     await supabase.auth.signInWithOAuth({
       provider: "google",
       options: {
-        redirectTo: "https://smart-bookmark-app-ochre.vercel.app",
+        redirectTo: window.location.origin,
       },
     });
   };
