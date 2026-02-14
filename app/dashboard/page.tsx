@@ -30,20 +30,21 @@ export default function Dashboard() {
   };
 
  
-  useEffect(() => {
-    const getUser = async () => {
-      const { data } = await supabase.auth.getUser();
+useEffect(() => {
+  const getUser = async () => {
+    const { data } = await supabase.auth.getUser();
 
-      if (!data.user) {
-        window.location.href = "/";
-      } else {
-        setUser(data.user);
-        fetchBookmarks(data.user.id);
-      }
-    };
+    if (!data.user) {
+      window.location.href = "/";
+    } else {
+      setUser(data.user);
+      fetchBookmarks(data.user.id);
+    }
+  };
 
-    getUser();
-  }, []);
+  getUser();
+}, []);
+
 
   
   useEffect(() => {
